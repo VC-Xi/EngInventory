@@ -12,6 +12,9 @@ class Item:
     category: str
     quantity_total: int
     quantity_available: int
+    manufacturer: str = ""
+    model: str = ""
+    serial_no: Optional[str] = None
     location: str = ""
     condition: str = "Good"
     image_path: Optional[str] = None
