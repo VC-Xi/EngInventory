@@ -33,7 +33,7 @@ class Loan:
     borrowed_at: str
     due_at: str
     returned_at: Optional[str] = None
-    status: str = "active"  # e.g., "active", "returned", "overdue"
+    status: str = "active"
 
 
 @dataclass
@@ -44,7 +44,7 @@ class WaitlistEntry:
     requester_contact: str
     priority: int = 1
     requested_at: str = field(default_factory=lambda: datetime.now().isoformat())
-    status: str = "waiting"  # e.g., "waiting", "notified", "fulfilled", "cancelled"
+    status: str = "waiting"
 
 
 @dataclass
@@ -53,6 +53,6 @@ class UserAccount:
     username: str
     password_hash: str
     salt: str
-    role: str = "staff"  # e.g., "admin", "staff", "viewer"
+    role: str = "staff"
     is_active: bool = True
     created_at: str = field(default_factory=lambda: datetime.now().isoformat())

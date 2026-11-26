@@ -2,7 +2,7 @@ import os
 import sqlite3
 from pathlib import Path
 
-# 1. Create %LOCALAPPDATA%\EngInventory\ and required subfolders
+# Create %LOCALAPPDATA%\EngInventory\ and required subfolders
 APP_DIR = Path(os.getenv("LOCALAPPDATA", Path.home() / "AppData/Local")) / "EngInventory"
 for sub in ("images", "thumbnails", "backups", "logs"):
     (APP_DIR / sub).mkdir(parents=True, exist_ok=True)
