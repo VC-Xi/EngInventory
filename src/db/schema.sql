@@ -22,8 +22,11 @@ CREATE TABLE IF NOT EXISTS items (
 CREATE TABLE IF NOT EXISTS loans (
     loan_id TEXT PRIMARY KEY,
     item_id TEXT NOT NULL,
+    borrower_id TEXT NOT NULL,
     borrower_name TEXT NOT NULL,
     borrower_contact TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'staff',
+    purpose NOT NULL DEFAULT 'borrow',
     quantity INTEGER NOT NULL CHECK (quantity > 0),
     borrowed_at TEXT NOT NULL,
     due_at TEXT NOT NULL,
@@ -35,8 +38,11 @@ CREATE TABLE IF NOT EXISTS loans (
 CREATE TABLE IF NOT EXISTS waitlist (
     entry_id TEXT PRIMARY KEY,
     item_id TEXT NOT NULL,
+    requester_id TEXT NOT NULL,
     requester_name TEXT NOT NULL,
     requester_contact TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'staff',
+    purpose NOT NULL DEFAULT 'borrow',
     priority INTEGER NOT NULL DEFAULT 1,
     requested_at TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'waiting',
@@ -66,4 +72,3 @@ CREATE INDEX IF NOT EXISTS idx_loans_status_due ON loans (status, due_at);
 CREATE INDEX IF NOT EXISTS idx_waitlist_item_status ON waitlist (item_id, status);
 CREATE INDEX IF NOT EXISTS idx_items_category ON items (category);
 
-PRAGMA table_info(items);
